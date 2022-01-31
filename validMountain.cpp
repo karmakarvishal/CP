@@ -52,7 +52,26 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+bool solve(v64 arr,ll n){
+
+    ll left = 0;
+    ll N = arr.size();
+
+
+    while((left + 1) < N && arr[left] < arr[left + 1])
+    left++;
+
+    if(left == 0 || left == N-1)
+    return false;
+
+    while((left + 1 ) < N && arr[left] > arr[left + 1])
+    left ++;
+
+
+    return left == (N-1);
+
+
+
 }
 int main()
 {
@@ -61,7 +80,20 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 freopen("error.txt","w",stderr);
 #endif
-
-
-
+ fast_cin();
+ ll t;
+ ll n;
+ ll size;
+ cin >> t;
+ cin >> size;
+ v64 arr;
+ for(int it=1;it<=t;it++) {
+     while( cin >> n)
+     {
+         arr.push_back(n);
+     }
+     bool res = solve(arr,size);
+     dbg(res);
+ }
+ return 0;
 }
