@@ -1,0 +1,4 @@
+// We can run the code by 2 ways:
+//1. By Ctrl+Shift+B it compiles and makes the exe. Run that exe by .\hello.cpp in power shell or by exe name in cmd prompt
+//2. By Ctrl+Alt+N. It takes the input from input.txt files and write it to output.txt files
+//By using the first method it takes the input from console and logs output in the console.
