@@ -50,6 +50,18 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
+
+template <typename S>
+ostream& operator<<(ostream& os,
+                    const vector<S>& vector)
+{
+    // Printing all the elements
+    // using <<
+    for (auto element : vector) {
+        os << element << " ";
+    }
+    return os;
+}
  
 void findCombination(int index,int target, vector<int>& ds, vector<vector<int>>& ans, vector<int>& arr)
 {
@@ -82,9 +94,6 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     return ans;
 }
 
-
-void solve(){
-}
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -94,9 +103,12 @@ freopen("output.txt", "w", stdout);
  fast_cin();
  ll t;
  cin >> t;
+ v32 arr = {2,3,6,7};
+ ll target = 7;
+ vv32 resArr;
  for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
-     solve();
+     resArr = combinationSum(arr,target);
  }
+    cout << resArr << endl;
  return 0;
 }
