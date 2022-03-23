@@ -52,7 +52,33 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+int solve(vector<ll>&v1,vector<ll>&v2,vector<ll>&v3,vector<ll>&v4)
+{
+
+    map<int,int> map;
+
+    for( auto x1:v1)
+    {
+        for(auto x2:v2)
+        {
+            map[(x1+x2)]++;
+        }
+    }
+
+    int res = 0;
+
+    for(auto x3:v3)
+    {
+        for(auto x4:v4)
+        {
+            res += map[-(x3+x4)];
+        }
+    }
+
+
+    return res;
+
+
 }
 int main()
 {
@@ -64,9 +90,12 @@ freopen("error.txt","w",stderr);
  fast_cin();
  ll t;
  cin >> t;
+ v64 vec1 = {1,2};
+ v64 vec2 = {-2,-1};
+ v64 vec3 = {-1,2};
+ v64 vec4 = {0,2};
  for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
-     solve();
+     cout<<solve(vec1,vec2,vec3,vec4)<<endl;;
  }
  return 0;
 }

@@ -52,7 +52,8 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+void solve(vector<int> & arr){
+    
 }
 int main()
 {
@@ -64,8 +65,8 @@ freopen("error.txt","w",stderr);
  fast_cin();
  ll t;
  cin >> t;
+ v64 prices = {7,1,5,3,6,4};
  for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
      solve();
  }
  return 0;

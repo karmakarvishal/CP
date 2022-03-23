@@ -52,8 +52,41 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+
+void dfs(vector<vector<int>> & image, int r ,int c, int newColor, int baseColor)
+{
+
+
+    int rl = image.size();
+    int cl = image[0].size();
+
+    if(r < 0 || r >= rl || c < 0 || c >= cl || image[r][c] != baseColor)
+    return;
+
+
+    image[r][c] = newColor;
+
+
+    dfs(image,r+1,c,newColor,baseColor);
+    dfs(image,r-1,c,newColor,baseColor);
+    dfs(image,r,c+1,newColor,baseColor);
+    dfs(image,r,c-1,newColor,baseColor);
+
 }
+
+vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+    if(image[sr][sc] != newColor)
+        dfs(image,sr,sc,newColor,image[sr][sc]);
+    return image;
+}
+
+
+
+
+
+
+
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -61,12 +94,23 @@ freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 freopen("error.txt","w",stderr);
 #endif
- fast_cin();
- ll t;
- cin >> t;
- for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
-     solve();
- }
+
+
+ vv32 image = {{0,0,0},{0,0,0}};
+ int sr = 1;
+ int sc = 1;
+ int color = 2;
+
+
+
+     floodFill(image,sr,sc,color);
+
+    for(int i =0;i<image.size();i++)
+    {
+        for(int j = 0;j<image[0].size();j++)
+        {
+            cout<<image[i][j]<<endl;
+        }
+    } 
  return 0;
 }

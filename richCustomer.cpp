@@ -52,7 +52,18 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
+int solve(vector<vector<int>> &accounts,ll n){
+    int mx = 0;
+        for(auto x:accounts)
+        {
+            int sum = accumulate(x.begin(),x.end(),0);
+            if(sum > mx)
+            {
+                mx = max(mx,sum);
+            }            
+        }
+        
+    return mx;
 }
 int main()
 {
@@ -64,9 +75,17 @@ freopen("error.txt","w",stderr);
  fast_cin();
  ll t;
  cin >> t;
+ ll size;
+ ll input;
+ vvp64 arr;
+
  for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
-     solve();
+     cin >> size;
+     while(cin >> input)
+     {
+         arr.push_back(input);
+     }
+     solve(arr,size);
  }
  return 0;
 }

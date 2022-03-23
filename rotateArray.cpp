@@ -51,9 +51,54 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
+//Solution 1 With Extra Space O(N)
+void solve(v64 &arr, ll n, ll k){
 
-void solve(){
+    v64 arr2;
+    v64 arr3;
+    k %= n;
+    forsn(i,(n-k),n)
+    {
+        //dbg(arr[i]);
+        arr2.push_back(arr[i]);
+    }
+
+    forsn(i,0,n-k)
+    {
+        //dbg(arr[i]);
+        arr3.push_back(arr[i]);
+    }
+
+    ll index = 0;
+    for(auto x:arr2)
+        {
+            arr[index] = x;
+            //dbg(arr[index]);
+            //dbg(x);
+            index++;
+        }
+
+    for(auto y:arr3)
+        {
+            arr[index] = y;
+            //dbg(arr[index]);
+            //dbg(y);
+            index++;
+        }
 }
+
+//Solution 2 With Extra Space O(1)
+void solve(v64 &arr, ll n, ll k)
+{
+
+    k%=n;
+    reverse(arr.begin(),arr.begin() + (n-k));
+    reverse(arr.begin()+(n-k),arr.end());
+    reverse(arr.begin(),arr.end());
+
+}
+
+
 int main()
 {
 #ifndef ONLINE_JUDGE
@@ -63,10 +108,22 @@ freopen("error.txt","w",stderr);
 #endif
  fast_cin();
  ll t;
+ ll k;
+ ll size;
+ ll input;
+
  cin >> t;
+ cin>>size;
+ cin>>k;
  for(int it=1;it<=t;it++) {
-     cout << "Case #" << it+1 << ": ";
-     solve();
+     v64 arr;
+     while(cin>>input)
+        arr.push_back(input);
+
+     solve(arr,size,k);
+
+     forn(i,size)
+        dbg(arr[i]);
  }
  return 0;
 }
